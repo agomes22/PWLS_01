@@ -1,6 +1,4 @@
 
-cmd shell
-
 git init       //inicializa o git
 
 git add       //adicionar ficheiros (git add nomedoficheiro.extenção ou git add . para adicionar tudo)
@@ -9,11 +7,6 @@ git commit -m ""     //comprometer o ficheiro,  dentro das aspas por uma nota do
 
 git push	//envia para o servidor
 
-<<<<<<< HEAD
-git pull	//recebe do servidor
-
-
-=======
 git pull	//recebe do servidor 
 
 _______________________________________________
@@ -30,4 +23,3 @@ git branch -d func_x       //Eliminar o ramo
 git merge func_x         //Envia o ramo e junto ao master
 
 ______________________________________________
->>>>>>> origin/master
