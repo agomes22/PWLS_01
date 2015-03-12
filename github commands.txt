@@ -1,3 +1,6 @@
+
+cmd shell
+
 git init       //inicializa o git
 
 git add       //adicionar ficheiros (git add nomedoficheiro.extenção ou git add . para adicionar tudo)
@@ -7,3 +10,5 @@ git commit -m ""     //comprometer o ficheiro,  dentro das aspas por uma nota do
 git push	//envia para o servidor
 
 git pull	//recebe do servidor
+
+
