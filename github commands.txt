@@ -12,7 +12,7 @@ git pull	//recebe do servidor
 _______________________________________________
 
                       Ramos
-
+teste
 
 git checkout -b func_x    //Criar ramo
 
