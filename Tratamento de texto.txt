@@ -1,0 +1,98 @@
+Tratamento de Texto
+
+IsLetter -> caracteres A-Z
+IsUpper-> Maiusculas
+IsLower-> Minusculas
+IsDigit->  0 a 9
+IsLetterOrDigit ->letras e numeros
+IsNumber-> todos os digitos + unicode + caracteres romanos
+IsSeparator -> Espaço + caracteres unicode de espaço
+IsWhiteSpace-> todos os separadores + /n, /r, /t, /f e /v
+IsPunctuation-> simbolos utilizados para pontuação
+IsSymbol-> "Todos" os simbolos (matemática, modificadores, etc)
+IsControl-> caracteres não impressos de controlo(/n, /r, /t,/o)
+
+
+
+criar strings
+
+string 1="Hello";
+string s2="Primeira Linha/r/nSegunda Linha";
+
+criar uma sequencia de caracteres
+//*********************************************************************************
+
+
+
+Null e strings vazias
+string empty="";
+Console.Writeline(empty ==""); //true
+Console.Writeline(empty ==string.empty); //true
+Console.Writeline(empty ==0); //true
+
+Aceder a caracteres numa string
+string str = "abcde";
+char letter = str[l];
+-> como string é um conjunto de caracteres
+
+foreach(char c in "123")
+Console.Writeline(C+","); //123
+
+Pesquisar dentro de uma string
+Console.Writeline("Aula de programação".Contains ("de"));
+
+Console.Writeline("Aula de programação".EndWith ("Programação"));
+
+Console.Writeline("abcde".IndexOf("cd"));
+
+StartsWith
+EndsWith    - Permitem ejetuar comparações
+IndexOf        
+
+
+Console.Writeline("abcde".IndexOf("CD", stringComparison.CurrentCultursIgnoreCase));
+
+LastIndexOf <- conta da direita para a esquerda
+
+IndexOfAny <- retorna a primeira posição que encontra( esq ou direita)
+
+Console.Writeline("ob,cd ef".IndexOfAny(new char[] {´´,´´}));
+
+Console.Writeline("pasbwOrd".IndexOfAny("0123456789".ToCharAny[] {}));
+
+
+Manipular strings
+
+sub strings
+string left3="12345".substring(0,3);
+
+string mid3="12345".substring(1,3);
+
+string end3="12345".substring(3);
+
+
+
+Console.Writeline("12345".PadLeft(9,'*´));
+
+Console.Writeline("12345".PadLeft(9));
+
+Trim()
+TrimStart()   -    Remove caracteres especificos por defeito remove espaços em branco e caracteres \n,\t,etc
+TrimEnd()
+
+Console.Writeline(" abc \t\n".Trim().lenght);
+
+Console.Writeline(" to be done".Replace("")."l"));
+
+Console.Writeline(" to be done".Replace("").""));
+
+
+Inserir e Remover
+String s1="HelloWord".Insert(3,",");
+
+String s2=s1.Remove(3,2);
+
+
+
+
+
