@@ -92,6 +92,42 @@ String s1="HelloWord".Insert(3,",");
 
 String s2=s1.Remove(3,2);
 
+separar e juntar strings
+split() -> recebe sequencia  e um array
+string[]words="The quick Bown for".split();
+
+foreach(string word int words)
+Console.Writeline(word + "l");
+
+Por defeito o soft utiliza os espaços em branco
+
+Join -> Faz o oposto do soft
+string[] words = "the quick brown of".split();
+
+
+string together = string.Join("";words);
+Concat -> semelhante ao Join aceita strings como parametros
+
+String Frase= string.Concat("The", "Quality", "Brown");
+
+String ProgramFrase = "The", "Quality", "Brown";
+
+String.Format -> permite criar string e colocar variaveis junto com o texto
+
+String Composta =" it´s {0} degrees n{1}
+
+String s= String.Format(composta,35,"path", Date Time.Now.DayOfWeek);
+
+String Composta2= "Name={0,-20} credit limit {1,15:c}";
+
+Console.Writeline(string.Format(Composta2, "Maia", 500));
+Console.Writeline(string.Format(Composta2, "Joao", 20000));
+/* Nome=Maia Credit Limit= 500 00
+    Nome=Joao Credit Limit= 20 000 00
+*/
+String s= "Name" + "Maia".PadRight(20)+"Credit Limit=" +
+500.ToString("c").Parleft(15);
+
 
 
 
