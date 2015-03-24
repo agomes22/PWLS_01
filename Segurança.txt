@@ -1,0 +1,22 @@
+Recursos de segurança
+Hoje em dia as áreas ligadas as tecnologias tem sido alvo de um desenvolvimento notório.
+Como utilizadores, sente-se esta evolução quando, na aquisição de um novo equipamento (Ex: computador) e passado um curto período de tempo o modelo adquirido já se torna “absolutamente” a saída de novos modelos.
+A segurança tem uma evolução semelhante ao desenvolvimento tecnológico.
+Isto é apos tomar medidas de proteção tornar o sistema seguro e mante-lo protegido, já existe alguém (hacker) a tentar encontrar uma falta, ou ate já conseguiu quebrar as medidas de segurança.
+O que isto implica é que tem que haver uma atualização constante das medidas de segurança então, para que o sistema esteja protegido é necessário estar pelo menos um passo a frente dos possíveis atacantes.
+A prevenção contra as possíveis falhas de segurança é essencial.
+Os utilizadores “banais” não são, na maioria dos casos, os primeiros visados pelos hackers, o que deixa tempo para procederem as atualizações( Updates-Patch) OS, atualizações de antivírus).
+No entanto, algumas instituições são mesmo as principais alvos de ataques.
+Nesse caso, as medidas de segurança e a pesquisa de informação sobre possíveis falhas (BUGS) ou ameaças (vírus, worms,etc..) é vital para assegurar a consistência dos serviços prestados.
+Existem conteúdos disponibilizados online:
+- Ultimas falhas de segurança;
+- Potenciais falhas de segurança;
+- Bugs(vulnerabilidade);
+- Ataques utilizados por hackers(projetos, esquemas, tutoriais,etc….);
+- Informação geral sobre segurança informática;
+Estes recursos devem ser regularmente consultados de forma a ter a certeza de que não estão expostas a possíveis falhas.
+É importante ter em conta que em determinadas instituições existem equipas especializadas somente para manter a instituição dentro dos parâmetros de segurança exigidas – constantemente elevados e atualizados devido ao aparecimento de novas ameaças.
+Alguns tipos de ataques as instituições:
+-Recolha não autorizada de informação das bases de dados;
+-Interferência nos sistemas de informação (alteração de dados em bases de dados, alteração de código fonte em páginas, desabilitação de serviços,..);
+-Visualização, edição, cópia ou eliminação de código fonte).
