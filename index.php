@@ -1,11 +1,54 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+body {
+		background-image: url("http://www.imagenstop.net/wp-content/gallery/imagens-de-fundo/Papel-de-Parede-Fundo-Colorido.jpg");
+		 background-repeat:no-repeat;
+		 background-size: 100%;
+	 }
+	 
+#divi
+{
+	color:bloack;
+	height:200px;
+	width:350px;
+	border:1px solid;
+	border-radius:5px;
+	float:left;
+	margin:30px;
+	
+}
+#texto
+{
+	float:left; 
+	margin-left:15px;
+	margin-top:15px;
+	height: 320px;
+	width: 220px;
+}
+#desc
+{
+	float:left; 
+	margin-left:15px; 
+	margin-right:15px;
+	margin-top:15px; 
+	height: 135px; 
+	width: 455px;
+}
+#topo
+{
+height:50px;
+width:100%;
+border:1px solid;
+border-radius:5px;
+}
+</style>
 </head>
 <body>
 <form action="index.php" method="POST">
 Street: <input type="text" name="rua">
-City: <input type="text" name="cidade">
+City: <input type="text" name="cidade"required>
 Country: <input type="text" name="pais">
 Name: <input type="text" name="nome">
 
@@ -51,7 +94,7 @@ Name: <input type="text" name="nome">
 		<option value="gym">Ginasio</option>
 		<option value="hardware_store">Loja de hardware</option>
 		<option value="health">Saude</option>
-		<option value="Hospital">Hospital</option>
+		<option value="hospital">Hospital</option>
 		<option value="insurance_agency">Agencia de Seguros</option>
 		<option value="jewelry_store">Ourivesaria</option>
 		<option value="meal_takeaway">Takeaway</option>
@@ -248,33 +291,42 @@ $address=$lat.",".$lng;			//define a variavel address como a junção das corden
 //vai buscar os lugares á volta da morada de um raio definido e que contenha o que é pedido no nome
 $urlp="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$address."&radius=".$radius."&name=".$name."&types=".$type."&key=".$key;
 //--------------------------------------------------------------------------------------------------
-echo $urlp;
+
 //urlp = url do api do places
 
 $contents=file_get_contents($urlp);
 $json=json_decode($contents);
+
 foreach ($json->results as $value)
 {
-	if(isset($value->icon)){
-		echo"<img src=".$value->icon." id='imagem'>";
-	}
+	echo'<div id="divi">';
 	
+	if(isset($value->icon)){
+		echo"<div style='float:left; background-image: url(".$value->icon."); background-size:100%; background-repeat:no-repeat; margin-left:15px; margin-top:15px; height: 71px; width: 71px;'></div>";
+	}
+	echo'<div id="texto">';
 	if(isset($value->name)){
 			
-			echo $value->name."   ";
+			echo $value->name."</br>";
 
 			}
 			if(isset($value->vicinity)){
 			
-			echo "Morada: ".$value->vicinity."</br>";
+			echo "<br>Morada: ".$value->vicinity."</br>";
 
 			}
-	if(isset($values->opening_hours->open_now)){
+	if(isset($value->opening_hours->open_now)){
+		if ($value->opening_hours->open_now==1)
+		{
+			$estado="Aberto";
+			echo "<br>Estado: ".$estado;
+		}
 		
-		echo "Estado: ".$values->opening_hours->open_now;
+		
 	
 	}
-		echo"<hr>";
+	echo'</div>';
+		echo'</div>'; 
 }
 
 }
