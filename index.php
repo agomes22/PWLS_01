@@ -188,6 +188,26 @@ $urlp="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$
 //urlp = url do api do places
 echo $urlp;		//teste do url
 
+$contents=file_get_contents($urlp);
+$json=json_decode($contents);
+foreach ($json->results as $value)
+{
+	if(isset($value->name)){
+			
+			echo $value->name;
 
+			}
+	foreach ($values->types as $typess)
+	{
+		if(isset($value->types)){
+				echo $typess;
+				}
+		
+	}
+	if(isset($values->opening_hours->open_now)){
+		echo $values->opening_hours->open_now;
+	
+	}
+}
 
 ?>
