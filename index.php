@@ -1,11 +1,14 @@
 <html>
-<head></head>
+<head>
+<meta charset="UTF-8">
+</head>
 <body>
 <form action="index.php" method="POST">
 Street: <input type="text" name="rua">
 City: <input type="text" name="cidade">
 Country: <input type="text" name="pais">
 Name: <input type="text" name="nome">
+
 <select name="raio">
 	<option value="5000">Raio de Distancia</option>
 	<option value="5000">5 Km</option>
@@ -92,23 +95,51 @@ Name: <input type="text" name="nome">
 
 
 //busca dos valores do formulario
+
+if(!empty($_POST['rua']))
+{
 $street=$_POST['rua'];
+}
+else $street="";
+if(!empty($_POST['cidade']))
+{
 $city=$_POST['cidade'];
+}
+else $city="";
+if(!empty($_POST['nome']))
+{
 $name=$_POST['nome'];
+}
+else $name="";
+if(!empty($_POST['pais']))
+{
 $country=$_POST['pais'];
+}
+else $country="";
+if(!empty($_POST['raio']))
+{
 $radius=$_POST['raio'];
+}
+else $radius="5000";
+if(!empty($_POST['tipo']))
+{
 $type=$_POST['tipo'];
+}
+else $type="";
 //-------------------------------
-echo $type;
 $key="AIzaSyAN0fFPOx-3IhMk05pz0_qAVyz5cijvqc4";		//chave
 
 //converte a rua em array
+if(isset($street))
+{
 $arrayr=explode(' ',$street);
 $nr=count($arrayr);
 $street=$arrayr[0];
+
 //-----------------------
 
 //trata a rua, mete os mais e a , no fim
+
 for($i=1;$i<=$nr;$i++)
 {
 	if($i==$nr)
@@ -120,14 +151,15 @@ for($i=1;$i<=$nr;$i++)
 		$street=$street."+".$arrayr[$i];
 	}
 }
+}
 //--------------------------------------
 
 //converte o pais em array
+if(isset($country)){
 $arrayc=explode(' ',$country);
-echo "</br>pais-".$country."</br>";
 $nc=count($arrayc);
-echo "</br>contador do pais-".$nc."</br>";
 $country=$arrayc[0];
+
 //-----------------------
 
 //trata o pais, mete os mais 
@@ -137,9 +169,11 @@ for($i=1;$i<$nc;$i++)
 		$country=$country."+".$arrayc[$i];
 }
 }
+}
 //--------------------------------------
 
 //converte cidade em array
+if(isset($city)){
 $arrayc=explode(' ',$city);
 $nc=count($arrayc);
 $city=$arrayc[0];
@@ -157,57 +191,91 @@ for($i=1;$i<=$nc;$i++)
 		$city=$city."+".$arrayc[$i];
 	}
 }
-//--------------------------------------
+}
+if(isset($name)){
+$arrayn=explode(' ',$name);
+$nn=count($arrayn);
+$name=$arrayn[0];
+//-----------------------
 
+//trata a cidade, mete os mais e a , no fim
+for($i=1;$i<=$nn;$i++)
+{
+	if($i==$nn)
+	{
+		$name=$name.",";
+	}
+	else
+	{
+		$name=$name."+".$arrayn[$i];
+	}
+}
+}
+//--------------------------------------
+if(!isset($street))
+{
+$street="";
+}
+if(!isset($city))
+{
+$city="";
+}
+if(!isset($country))
+{
+$country="";
+}
 $address=$street.$city.$country;		//define a variavel address como a junção da rua + cidade + pais
-echo $address;
+
 
 
 //vais buscar as cordenadas da morada ------------------------------------------------------
+if(isset($address)){
 $urlg="https://maps.googleapis.com/maps/api/geocode/json?address=".$address."&key=".$key."";		
 $contents=file_get_contents($urlg);
 $json=json_decode($contents);
 foreach ($json->results as $value)
 {
 $lat=$value->geometry->location->lat;		//define a variavel lat como a latitude do local
-echo"$lat</br>";
 $lng=$value->geometry->location->lng;		//define a variavel lng como a longitude do local
-echo"$lng</br>";
 }
+
 //-------------------------------------------------------------------------------------------
 //urlg = url do api do geocoding
-echo "$urlg</br>";		//teste do url
+//teste do url
+if(!empty($lat)){
 $address=$lat.",".$lng;			//define a variavel address como a junção das cordenadas separadas por ,
-echo $address;		//teste da variavel address
-
-
+}
 //vai buscar os lugares á volta da morada de um raio definido e que contenha o que é pedido no nome
 $urlp="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$address."&radius=".$radius."&name=".$name."&type=".$type."&key=".$key."";
 //--------------------------------------------------------------------------------------------------
 
 //urlp = url do api do places
-echo $urlp;		//teste do url
 
 $contents=file_get_contents($urlp);
 $json=json_decode($contents);
 foreach ($json->results as $value)
 {
+	if(isset($value->icon)){
+		echo"<img src=".$value->icon." id='imagem'>";
+	}
+	
 	if(isset($value->name)){
 			
-			echo $value->name;
+			echo $value->name."   ";
 
 			}
-	foreach ($values->types as $typess)
-	{
-		if(isset($value->types)){
-				echo $typess;
-				}
-		
-	}
+			if(isset($value->vicinity)){
+			
+			echo "Morada: ".$value->vicinity."</br>";
+
+			}
 	if(isset($values->opening_hours->open_now)){
 		echo $values->opening_hours->open_now;
-	
 	}
+		echo"<hr>";
 }
+
+}
+
 
 ?>
