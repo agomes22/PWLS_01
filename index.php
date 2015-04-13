@@ -203,7 +203,7 @@ for($i=1;$i<=$nn;$i++)
 {
 	if($i==$nn)
 	{
-		$name=$name.",";
+		$name=$name."";
 	}
 	else
 	{
@@ -246,9 +246,9 @@ if(!empty($lat)){
 $address=$lat.",".$lng;			//define a variavel address como a junção das cordenadas separadas por ,
 }
 //vai buscar os lugares á volta da morada de um raio definido e que contenha o que é pedido no nome
-$urlp="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$address."&radius=".$radius."&name=".$name."&type=".$type."&key=".$key."";
+$urlp="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$address."&radius=".$radius."&name=".$name."&types=".$type."&key=".$key;
 //--------------------------------------------------------------------------------------------------
-
+echo $urlp;
 //urlp = url do api do places
 
 $contents=file_get_contents($urlp);
@@ -270,7 +270,9 @@ foreach ($json->results as $value)
 
 			}
 	if(isset($values->opening_hours->open_now)){
-		echo $values->opening_hours->open_now;
+		
+		echo "Estado: ".$values->opening_hours->open_now;
+	
 	}
 		echo"<hr>";
 }
