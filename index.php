@@ -14,7 +14,7 @@ Name: <input type="text" name="nome">
 	<option value="5000">5 Km</option>
 	<option value="15000">15 Km</option>
 	<option value="50000">50 Km</option>
-	<option value="100000">1000 Km</option>
+	<option value="100000">100 Km</option>
 
 
 </select>
