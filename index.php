@@ -124,9 +124,9 @@ for($i=1;$i<=$nr;$i++)
 
 //converte o pais em array
 $arrayc=explode(' ',$country);
-echo "</br>pais-".$country."</br>";
+
 $nc=count($arrayc);
-echo "</br>contador do pais-".$nc."</br>";
+
 $country=$arrayc[0];
 //-----------------------
 
@@ -160,7 +160,7 @@ for($i=1;$i<=$nc;$i++)
 //--------------------------------------
 
 $address=$street.$city.$country;		//define a variavel address como a junção da rua + cidade + pais
-echo $address;
+
 
 
 //vais buscar as cordenadas da morada ------------------------------------------------------
@@ -170,9 +170,9 @@ $json=json_decode($contents);
 foreach ($json->results as $value)
 {
 $lat=$value->geometry->location->lat;		//define a variavel lat como a latitude do local
-echo"$lat</br>";
+
 $lng=$value->geometry->location->lng;		//define a variavel lng como a longitude do local
-echo"$lng</br>";
+
 }
 //-------------------------------------------------------------------------------------------
 //urlg = url do api do geocoding
@@ -197,13 +197,14 @@ foreach ($json->results as $value)
 			echo $value->name;
 
 			}
-	foreach ($values->types as $typess)
-	{
+	
+	
 		if(isset($value->types)){
-				echo $typess;
+				foreach ($values->types as $typess){
+				echo $typess;}
 				}
 		
-	}
+	
 	if(isset($values->opening_hours->open_now)){
 		echo $values->opening_hours->open_now;
 	
