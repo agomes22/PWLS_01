@@ -157,13 +157,7 @@ for($i=1;$i<=$nr;$i++)
 //converte o pais em array
 if(isset($country)){
 $arrayc=explode(' ',$country);
-<<<<<<< HEAD
 $nc=count($arrayc);
-=======
-
-$nc=count($arrayc);
-
->>>>>>> origin/master
 $country=$arrayc[0];
 
 //-----------------------
@@ -242,13 +236,7 @@ $json=json_decode($contents);
 foreach ($json->results as $value)
 {
 $lat=$value->geometry->location->lat;		//define a variavel lat como a latitude do local
-<<<<<<< HEAD
 $lng=$value->geometry->location->lng;		//define a variavel lng como a longitude do local
-=======
-
-$lng=$value->geometry->location->lng;		//define a variavel lng como a longitude do local
-
->>>>>>> origin/master
 }
 
 //-------------------------------------------------------------------------------------------
@@ -281,17 +269,6 @@ foreach ($json->results as $value)
 			echo "Morada: ".$value->vicinity."</br>";
 
 			}
-<<<<<<< HEAD
-=======
-	
-	
-		if(isset($value->types)){
-				foreach ($values->types as $typess){
-				echo $typess;}
-				}
-		
-	
->>>>>>> origin/master
 	if(isset($values->opening_hours->open_now)){
 		echo $values->opening_hours->open_now;
 	}
