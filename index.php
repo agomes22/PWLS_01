@@ -6,7 +6,76 @@ Street: <input type="text" name="rua">
 City: <input type="text" name="cidade">
 Country: <input type="text" name="pais">
 Name: <input type="text" name="nome">
-Raido de Pesquisa <input type="text" name="raio">
+<select name="raio">
+	<option value="5000">Raio de Distancia</option>
+	<option value="5000">5 Km</option>
+	<option value="15000">15 Km</option>
+	<option value="50000">50 Km</option>
+	<option value="100000">1000 Km</option>
+
+
+</select>
+<select name="tipo">
+		<option value="">Tipo</option>
+        <option value="airport">Aeroporto</option>
+		<option value="aquarium">Aquario</option>
+		<option value="art_gallery">Galeria de Arte</option>
+		<option value="atm">Caixa Multibanco</option>
+		<option value="bakery">Padaria</option>
+		<option value="bank">Banco</option>
+		<option value="bar">Bar</option>
+		<option value="bicycle_store">Loja de Bicicletas</option>
+		<option value="book_store">Loja de Livros</option>
+		<option value="bus_station">Paragen de Autocarros</option>
+		<option value="cafe">Cafe</option>
+		<option value="car_dealer">Vendedor de Carros</option>
+		<option value="car_rental">Aluguer de Carros</option>
+		<option value="car_repair">Oficina</option>
+		<option value="casino">Casino</option>
+		<option value="cemetery">Cemiterio</option>
+		<option value="church">Igreja</option>
+		<option value="city_hall">Camara Municipal</option>
+		<option value="clothing_store">Loja de roupa</option>
+		<option value="dentist">Dentista</option>
+		<option value="doctor">Doutor</option>
+		<option value="electronics_store">Loja de Eletrodomesticos</option>
+		<option value="finance">Finanças</option>
+		<option value="fire_station">Bombeiros</option>
+		<option value="florist">Florista</option>
+		<option value="food">Comida</option>
+		<option value="gas_station">Bomba de Gasolina</option>
+		<option value="grocery_or_supermarket">Supermercado</option>
+		<option value="gym">Ginasio</option>
+		<option value="hardware_store">Loja de hardware</option>
+		<option value="health">Saude</option>
+		<option value="Hospital">Hospital</option>
+		<option value="insurance_agency">Agencia de Seguros</option>
+		<option value="jewelry_store">Ourivesaria</option>
+		<option value="meal_takeaway">Takeaway</option>
+		<option value="movie_theater">Cinema</option>
+		<option value="moving_company">Mudanças</option>
+		<option value="museum">Museu</option>
+		<option value="night_club">Discoteca</option>
+		<option value="park">Parque</option>
+		<option value="pet_store">Loja de animais</option>
+		<option value="pharmacy">Farmacia</option>
+		<option value="police">Policia</option>
+		<option value="post_office">Correios</option>
+		<option value="real_estate_agency">Agencia Imobiliaria</option>
+		<option value="restaurant">Restaurante</option>
+		<option value="school">Escola</option>
+		<option value="shoe_store">Sapataria</option>
+		<option value="shopping_mall">Shopping</option>
+		<option value="stadium">Estadio</option>
+		<option value="store">Loja</option>
+		<option value="subway_station">Metro</option>
+		<option value="train_station">Comboio</option>
+		<option value="travel_agency">Agencia de viagem</option>
+		<option value="university">Universidade</option>
+		<option value="zoo">Zoo</option>
+		
+		
+    </select>
 <input type="submit" name="submeter">
 </form>
 
@@ -28,8 +97,9 @@ $city=$_POST['cidade'];
 $name=$_POST['nome'];
 $country=$_POST['pais'];
 $radius=$_POST['raio'];
+$type=$_POST['tipo'];
 //-------------------------------
-
+echo $type;
 $key="AIzaSyAN0fFPOx-3IhMk05pz0_qAVyz5cijvqc4";		//chave
 
 //converte a rua em array
@@ -112,7 +182,7 @@ echo $address;		//teste da variavel address
 
 
 //vai buscar os lugares á volta da morada de um raio definido e que contenha o que é pedido no nome
-$urlp="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$address."&radius=".$radius."&name=".$name."&key=".$key."";
+$urlp="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=".$address."&radius=".$radius."&name=".$name."&type=".$type."&key=".$key."";
 //--------------------------------------------------------------------------------------------------
 
 //urlp = url do api do places
