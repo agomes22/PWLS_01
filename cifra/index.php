@@ -20,8 +20,8 @@
 <?php 
 if (isset($_POST['submite']))
 {	
-	$chave=$_POST['chave'];
-	$tipo=$_POST['tipo'];
+	$chave=$_POST['chave'];//chave do formulario
+	$tipo=$_POST['tipo'];//tipo do formulario
 		
 	//COLOCAR EM MAISCULAS
 	$chave=strtoupper($chave);
@@ -31,6 +31,7 @@ if (isset($_POST['submite']))
 	$controlador=0;
 	$textoCifrado=" ";
 	$textoChave=" ";
+	
 	$controlo=1;//variavel e ciclo para ver se a chave tem outros caracteres sem ser letras
 	for ($i=0;$i<=$tamChave;$i++)
 	{
@@ -78,8 +79,7 @@ if (isset($_POST['submite']))
 	}//SE NAO TIVER FICHEIRO VAI BUSCAR O TEXTO AO FORMULARIO
 	else
 	{
-		//VARIAVEIS FORMULARIO
-		$texto=$_POST['texto'];
+		$texto=$_POST['texto'];//texto do formulario
 	}
 	//TRATAMENTO VARIAVEL TEXTO
 	$texto=strtoupper($texto);
@@ -104,7 +104,7 @@ if (isset($_POST['submite']))
 			$textoChave[$i]=$texto[$i];	
 		}
 	}
-	
+	//Se for para Cifrar
 	if ($tipo=="cifrar")
 	{		
 		for ($i=0;$i<=$tamTexto;$i++)
@@ -129,7 +129,7 @@ if (isset($_POST['submite']))
 			}
 		}
 		echo "<b>Texto Cifrado: </b>".$textoCifrado;
-	}
+	}//Se for para decifrar
 	else if ($tipo=="decifrar")
 	{
 		for ($i=0;$i<=$tamTexto;$i++)
