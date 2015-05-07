@@ -5,7 +5,7 @@
 <body>
 <form enctype="multipart/form-data" action="index.php" method="post">
 
-	<textarea name="texto" cols="40" rows="5"></textarea>OU Ficheiro .TXT
+	<textarea name="texto" cols="40" rows="5"></textarea>ou
 	<input type="file" name="ficheiro" accept="txt"/></br>
 	Chave<input type="text" name="chave"required/></br>
 	Cifrar<input type="radio" name="tipo" value="cifrar" checked></br>
@@ -20,16 +20,43 @@
 <?php 
 if (isset($_POST['submite']))
 {	
-	//VARIAVEIS FORMULARIO
-	$texto=$_POST['texto'];
+	if($_FILES['ficheiro']['name'] != "") 
+	{
+	
+		//VERIFICA SE O FICHEIRO SO TEM TEXTO
+	if(isset($_FILES) && $_FILES['ficheiro']['type'] != 'text/plain')
+	{
+		echo "<span>Ficheiro nao pode ser aceite ! Faça o upload de ficheiro com extensao '*.txt'.</span>";
+		exit();
+	}		 
+ 
+	//ARMAZENA TEMPORARIAMENTE O NOME DO FICHEIRO
+	$fileName = $_FILES['ficheiro']['tmp_name'];
+ 
+	//MENSAGEM DE ERRO SE NAO CONSEGUIR ABRIR
+	$ficheir = fopen($fileName,"r") or exit("Nao é possivel abrir!");
+  
+	$texto=" ";
+	$i=0;
+	//COLOCA NA VARIAVEL TEXTO O TEXTO DO FICHEIRO
+	while(!feof($ficheir)) {
+	$texto[$i]=fgetc($ficheir);
+	$i++;
+	}
+	fclose($ficheir);
+	}
+	else
+	{
+		//VARIAVEIS FORMULARIO
+		$texto=$_POST['texto'];
+	}
+	
 	$chave=$_POST['chave'];
 	$tipo=$_POST['tipo'];
-	
+		
 	//COLOCAR EM MAISCULAS
 	$texto=strtoupper($texto);
 	$chave=strtoupper($chave);
-	echo is_numeric($texto[1]);
-	echo is_numeric($texto[2]);
 	
 	//VARIAVEIS
 	$tamTexto=strlen($texto)-1;
@@ -76,6 +103,10 @@ if (isset($_POST['submite']))
 			{
 				$textoCifrado[$i]=chr($total);
 			}
+			else
+			{
+				$textoCifrado[$i]=$texto[$i];	
+			}
 		}
 		echo "<b>Texto Cifrado: </b>".$textoCifrado;
 	}
@@ -98,13 +129,7 @@ if (isset($_POST['submite']))
 			}
 		}
 		echo "<b>Texto Decifrado: </b>".$textoCifrado;
-	}
-
-
-
-
-
-	
+	}	
 }
 
 ?>
