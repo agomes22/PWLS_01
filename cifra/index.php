@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
+
 <form enctype="multipart/form-data" action="index.php" method="post">
 
 	<textarea name="texto" cols="40" rows="5"></textarea>ou
@@ -10,12 +11,10 @@
 	Chave<input type="text" name="chave"required/></br>
 	Cifrar<input type="radio" name="tipo" value="cifrar" checked></br>
 	Decifrar<input type="radio" name="tipo" value="decifrar"></br>
-	<input type="submit" name="submite" value="Executar"/>
+	<input type="submit" name="submite" value="Executar" />
 	</br>
 </form>
 
-</body>
-</html>
 
 <?php 
 if (isset($_POST['submite']))
@@ -57,7 +56,7 @@ if (isset($_POST['submite']))
 		//VERIFICA SE O FICHEIRO SO TEM TEXTO
 		if(isset($_FILES) && $_FILES['ficheiro']['type'] != 'text/plain')
 		{
-			echo "<span>Ficheiro nao pode ser aceite ! Faça o upload de ficheiro com extensao '*.txt'.</span>";
+			echo "<b><span>Ficheiro nao pode ser aceite ! Faça o upload de ficheiro com extensao '*.txt'.</span></b>";
 			exit();
 		}			 
  
@@ -65,7 +64,7 @@ if (isset($_POST['submite']))
 		$fileName = $_FILES['ficheiro']['tmp_name'];
  
 		//MENSAGEM DE ERRO SE NAO CONSEGUIR ABRIR
-		$ficheir = fopen($fileName,"r") or exit("Nao é possivel abrir!");
+		$ficheir = fopen($fileName,"r") or exit("<b>Nao é possivel abrir!</b>");
   
 		$texto=" ";
 		$i=0;
@@ -128,7 +127,14 @@ if (isset($_POST['submite']))
 				$textoCifrado[$i]=$texto[$i];	
 			}
 		}
-		echo "<b>Texto Cifrado: </b>".$textoCifrado;
+		echo "<b>Texto Original: </b>".$texto;
+		echo "<br><b>Chave: </b>".$chave;
+		echo "<br><b>Texto Decifrado: </b>".$textoCifrado;
+		$ficheiro = fopen("TextoCifrado.txt", "w") or die("Não foi possivel criar o ficheiro");
+		fwrite($ficheiro, $textoCifrado);
+		fclose($ficheiro);
+		echo "<a download href='TextoCifrado.txt'> download</a>";
+		
 	}//Se for para decifrar
 	else if ($tipo=="decifrar")
 	{
@@ -148,14 +154,23 @@ if (isset($_POST['submite']))
 				$textoCifrado[$i]=chr($total);
 			}
 		}
-		echo "<b>Texto Decifrado: </b>".$textoCifrado;
-	}	
-}
+		echo "<b>Texto Original: </b>".$texto;
+		echo "<br><b>Chave: </b>".$chave;
+		echo "<br><b>Texto Decifrado: </b>".$textoCifrado;	
+		$ficheiro = fopen("TextoCifrado.txt", "w") or die("Não foi possivel criar o ficheiro");
+		fwrite($ficheiro, $textoCifrado);
+		fclose($ficheiro);
+		echo "<br><a download href='TextoCifrado.txt'><img alt='Download Texto Cifrado' height='60' width='210' src='download.png'></a>" ;
+
+		}
 else 
 {
-	echo "<b>A Chave so pode ter letras</b>";
+	echo "<b>A Chave só pode ter letras</b>";
 }
 }
-
-
+}
 ?>
+
+
+</body>
+</html>
