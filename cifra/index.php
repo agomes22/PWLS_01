@@ -132,9 +132,9 @@ if (isset($_POST['submite']))
 		echo "<br><b>Texto Decifrado: </b>".$textoCifrado;
 		$ficheiro = fopen("TextoCifrado.txt", "w") or die("Não foi possivel criar o ficheiro");
 		fwrite($ficheiro, $textoCifrado);
-		fclose($ficheiro);
-		echo "<a download href='TextoCifrado.txt'> download</a>";
-		
+		fclose($ficheiro);			
+		echo "<br><a download href='TextoCifrado.txt'><img alt='Download Texto Cifrado' height='60' width='210' src='download.png'></a>" ;
+
 	}//Se for para decifrar
 	else if ($tipo=="decifrar")
 	{
